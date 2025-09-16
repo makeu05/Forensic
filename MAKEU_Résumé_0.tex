@@ -1,0 +1,170 @@
+\documentclass[12pt,a4paper]{article}
+
+% --- Encodage et typographie ---
+\usepackage[utf8]{inputenc}   % Encodage UTF-8
+\usepackage[T1]{fontenc}      % Codage des fontes
+\usepackage[french]{babel}    % Langue française
+
+% --- Mise en page ---
+\usepackage[a4paper,margin=2.5cm]{geometry} % Marges
+\usepackage{setspace}                       % Gestion de l'interligne
+\setlength{\parindent}{0cm}                 % Pas d'indentation
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex} % Espacement entre paragraphes
+
+% --- Polices ---
+\usepackage{libertine} % Police plus esthétique
+
+% --- Graphiques ---
+\usepackage{graphicx}  % Inclusion d’images
+
+% --- Tableaux ---
+\usepackage{tabularx}  % Colonnes flexibles si tu veux en utiliser
+
+% --- Commandes perso ---
+\newcommand{\hsp}{\hspace{20pt}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+
+\begin{document}
+	\begin{titlepage}
+	\begin{sffamily}
+		\begin{center}
+			
+			% Upper part of the page. The '~' is needed because \\
+			% only works if a paragraph has started.
+			\includegraphics[scale=0.04]{logo_polytech.JPG}~\\[1.5cm]
+			
+			\textsc{\LARGE ÉCOLE NATIONALE SUPERIEURE POLYTECHNIQUE DE YAOUNDÉ }\\[2cm]
+			
+			\textsc{\LARGE DEPARTEMENT DE GENIE INFORMATIQUE }\\[2cm]
+			
+			\textsc{\LARGE INTRODUCTION AUX TECHNIQUES D'INVESTIGATION NUMERIQUE }\\[1.5cm]
+			
+			% Title
+			\HRule \\[0.4cm]
+			{ \huge \bfseries RESUME DU LIVRE D'INVESTIGATION NUMERIQUE\\[0.4cm] }
+			
+			\HRule \\[2cm]
+			\includegraphics[scale=0.2]{logo_polytech.JPG}
+			\\[2cm]
+			
+			% Author and supervisor
+			\begin{minipage}{0.4\textwidth}
+				\begin{flushleft} \large
+					MAKEU TENKU STELY BELVA\\
+					CIN-4\\
+				\end{flushleft}
+			\end{minipage}
+			\begin{minipage}{0.4\textwidth}
+				\begin{flushright} \large
+					\emph{Superviseur :} M.  \textsc{THIERRY MINKA}\\
+					
+				\end{flushright}
+			\end{minipage}
+			
+			\vfill
+			
+			% Bottom of the page
+			{\large 2025-2026}
+			
+		\end{center}
+	\end{sffamily}
+\end{titlepage}
+	
+	\newpage
+	\section*{INTRODUCTION}
+	Le cours d'\textbf{\emph{investigation numérique}} réalisé par M. Thierry MINKA pour les étudiants de cybersécurité et d'investigation numérique présente les aspects du métier d'investigateur numérique à l'ère post-quantique et de l'intelligence artificielle (IA).\\
+	Ce résumé a pour objectif de synthétiser les principaux points abordés dans le cours, en présentant les différents chapitres et les idées clés développées par l'auteur. Il permettra au lecteur de comprendre rapidement les notions essentielles et les applications pratiques de l'investigation numérique moderne.\\
+	
+	\newpage
+	\section{PRÉSENTATION DE L'ÉTHIQUE ET DU CADRE DÉONTOLOGIQUE}
+	L'investigation numérique repose sur plusieurs principes éthiques et déontologiques qui permettent de faire de ce métier un noble métier. Parmi ceux-ci, nous avons les piliers éthiques tels que : \og Proportionalité : adéquation des moyens aux fins, minimisation de l’intrusion, respect de la vie privée.\fg , \og Responsabilité : acceptation des conséquences de ses actions, devoir de vigilance, obligation de formation. \fg . \\
+	En ce qui concerne le cadre éthique, nous avons \textbf{les dix commandements de l'investigator} qui sont, entre autres :\\
+	\begin{enumerate}
+		\item Tu ne causeras pas de dommage aux systèmes que tu investigues. \\
+		\item Tu respecteras la vie privée et la dignité des personnes. \\
+		\item Tu maintiendras la chaîne de custody sans faille.  \\
+		\item Tu documenteras intégralement tes processus et décisions. \\
+		\item Tu reconnaîtras les limites de tes compétences et connaissances. \\
+		\item Tu résisteras aux pressions contraires à l’éthique. \\
+		\item Tu protégeras les données sensibles dont tu as la garde.  \\
+		\item Tu témoigneras avec honnêteté et objectivité. \\
+		\item Tu contribueras au développement de la discipline. \\
+		\item Tu honoreras la confiance que la société place en toi. \\
+	\end{enumerate}
+	
+	\vspace{0.5cm}
+	À ces principes et commandements s'ajoutent les sanctions et conséquences, tant sur le plan professionnel, comme la perte de crédibilité ou l'exclusion des communautés d'investigateurs, que sur le plan moral, avec la trahison de la confiance sociale et l'atteinte à l'intégrité de la discipline.
+	
+	\newpage
+	\section{FONDEMENTS ET ÉVOLUTION DE L'INVESTIGATION NUMÉRIQUE} 
+	L'investigation numérique tire ses fondements de diverses sources. Nous avons des principes comme celui de Locard et les différents modèles théoriques d'investigation (DFRWS, Casey), ainsi que des normes comme l'\textbf{ISO/IEC 27037}, norme internationale pour la collecte des preuves. \\
+	En ce qui concerne l'histoire de l'investigation numérique, dès les années 1970, nous avons l'apparition des premiers crimes informatiques avec l'affaire \textbf{\og The Creeper \fg}, puis d'autres enquêtes ont permis de poser les bases de l'investigation numérique. Dans les années 1990,l'\emph{International Organization on Computer Evidence} fut créée, permettant de standardiser les méthodologies. \\
+	Du début des années 2000 jusqu'en 2020, diverses enquêtes ont permis l'évolution du domaine avec de nouveaux outils et techniques. De 2020 à nos jours, nous avons l'ère du post-quantique et de l'IA, encore en pleine évolution, et le défi majeur ici est \og \textbf{comment va se comporter l'investigation numérique dans un contexte avec des techniques d'obfuscation avancées} \fg.
+	\begin{table}[h!]
+		\centering
+		\begin{tabularx}{\linewidth}{|c|X|}
+			\hline
+			\textbf{Période} & \textbf{Événements clés} \\
+			\hline
+			1970-1990 & Premiers crimes informatiques (Creeper, affaire des "414s") \\
+			\hline
+			1990-2000 & Professionnalisation (Opération Sundevil, cas Kevin Mitnick) \\
+			\hline
+			2000-2010 & Standardisation (Affaire Enron, création d’EnCase, RFC 3227) \\
+			\hline
+			2010-2020 & Ère du Big Data (Silk Road, Panama Papers, WannaCry) \\
+			\hline
+			2020-... & Post-quantique et IA (attaque SolarWinds, défis d’obfuscation) \\
+			\hline
+		\end{tabularx}
+		\caption{Évolution historique de l’investigation numérique}
+	\end{table}
+	
+	
+	\newpage
+	\section{IMPACT DE LA RÉVOLUTION QUANTIQUE ET INTRODUCTION DU TRILEMME CRO ET DU PROTOCOLE ZK-NR}
+	La révolution quantique représente un changement de paradigme, car elle a permis l'évolution de divers domaines comme la cryptographie, ce qui constitue un pas de géant dans le domaine de l'investigation numérique. Les protocoles \emph{ZK-NR} pour \textbf{Zero-Knowledge Non-Répudiation} offrent une résolution du paradoxe de l'authenticité invisible. Il s'agit d'un protocole modulaire combinant quatre couches indépendantes (Merkle, STARK, BLS, Dilithium) pour préserver la vie privée avec des garanties post-quantiques. \\
+	\begin{table}[h!]
+		\centering
+		\begin{tabularx}{\linewidth}{|c|X|}
+			\hline
+			\textbf{Axe} & \textbf{Signification} \\
+			\hline
+			Confidentialité & Protection des données sensibles et vie privée \\
+			\hline
+			Fiabilité & Véracité et intégrité des preuves numériques \\
+			\hline
+			Opposabilité & Capacité d’une preuve à être recevable juridiquement \\
+			\hline
+		\end{tabularx}
+		\caption{Composantes du trilemme CRO}
+	\end{table}
+	
+
+\newpage
+\section{ASPECTS JURIDIQUES ET PRATIQUES \\ OPÉRATIONNELLES DE L'INVESTIGATION  \\ NUMÉRIQUE}
+
+L'investigation numérique est régit par plusieurs juridictions tant sur le plan mondial que sur le plan Camerounais. En ce qui concerne la législation mondiale et régionale , nous avons dans le droit Américain : \og Federal Rules of Evidences (FRE)\fg qui concerne principalement l'authentification, nous avons aussi \og Stored Communications Act (SCA) \fg concernant la protection des communications stockées. Concernant le droit Européen, nous avons \og Règlement eIDAS Régulation (EU) No 910/2014 qui concerne les signature électroniques , le \og RGPD  et Investigation Reglement (UE) 2016/679\fg.\\
+ En Afrique, nous avons la convention de Malabo en 2014 portant sur la cybersécurité et la protection des données personnelles avec les États membres de l'UA.\\
+ Concernant le droit Camerounais , nous avons divers lois qui régissent l'investigation numérique et la cybersécurité :
+ \begin{enumerate}
+ 	\item  Loi N°2010/012 du 21 décembre 2010 Relative à la cybersécurité et la cybercriminalité \\
+ 	\item Loi N°2010/013 du 21 décembre 2010 Régissant les communications électroniques \\
+ 	\item Loi N°2024/017 du 23 décembre 2024 Régissant la protection des données à caractère personnel au Cameroun
+ \end{enumerate}
+ 
+ \section{PRATIQUES OPÉRATIONNELLES ET CAS PRATIQUE CAMEROUNAIS}
+ L’ouvrage met aussi en avant la dimension pratique du métier d’investigator numérique. 
+ Il ne suffit pas de connaître la théorie : il faut savoir manipuler des outils, gérer un laboratoire et rédiger des rapports conformes aux normes (ISO 27037, NIST, RFC 3227). 
+ Les SOP (Standard Operating Procedures) et la chaîne de custody sont donc essentielles. \\
+ 
+ \textbf{Outils principaux :} EnCase, Sleuth Kit, Volatility pour la mémoire, Wireshark pour le réseau, mais aussi des frameworks modernes intégrant l’IA. \\
+ 
+ \textbf{Exemple camerounais :} le cas \og CyberFinance Cameroun 2025 \fg présenté dans le livre. 
+ Une infrastructure bancaire a été compromise par un ransomware. 
+ L’investigation a nécessité la mise en place d’une timeline forensique, l’utilisation du protocole ZK-NR pour garantir la valeur juridique des preuves, et l’application de la loi N°2024/017 sur la protection des données personnelles. 
+ Ce cas illustre l’importance de lier théorie, outils et droit dans la pratique réelle.
+ 
+	
+\end{document}
