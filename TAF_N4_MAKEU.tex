@@ -1,0 +1,275 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{libertine}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue,
+	citecolor=black
+}
+\setstretch{1.2}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\newcommand{\hsp}{\hspace{20pt}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\title{Rapport d'Investigation Numérique (OSINT)}
+\author{Belva MAKEU TENKU}
+\date{Octobre 2025}
+
+\begin{document}
+
+% ---------------- Page de titre ----------------
+\begin{titlepage}
+	\begin{sffamily}
+		\begin{center}
+			\includegraphics[scale=0.04]{logo_polytech.JPG}~\\[1.5cm]
+			\textsc{\LARGE ÉCOLE NATIONALE SUPÉRIEURE POLYTECHNIQUE DE YAOUNDÉ}\\[2cm]
+			\textsc{\Large Département de Génie Informatique}\\[2cm]
+			\textsc{\large Introduction aux Techniques d'Investigation Numérique}\\[1.5cm]
+			\HRule \\[0.4cm]
+			{ \huge \bfseries Rapport d'Investigation Numérique (OSINT)\\[0.4cm] }
+			\HRule \\[2cm]
+			\includegraphics[scale=0.2]{logo_polytech.JPG} \\[2cm]
+			\begin{minipage}{0.4\textwidth}
+				\begin{flushleft} \large
+					MAKEU TENKU STELY BELVA\\
+					CIN-4\\
+				\end{flushleft}
+			\end{minipage}
+			\begin{minipage}{0.4\textwidth}
+				\begin{flushright} \large
+					\emph{Superviseur :} M. \textsc{Thierry Minka}\\
+				\end{flushright}
+			\end{minipage}
+			\vfill
+		\end{center}
+	\end{sffamily}
+\end{titlepage}
+
+% ---------------- Table des matières ----------------
+\tableofcontents
+\newpage
+
+% =======================================================
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+Ce rapport présente le travail d’investigation numérique réalisé dans le cadre du cours d’Introduction aux Techniques d’Investigation Numérique.  
+L’objectif est d’appliquer une méthodologie OSINT (Open Source Intelligence) pour collecter, analyser et confronter des informations disponibles publiquement afin de vérifier certaines hypothèses sur un sujet défini.
+
+% =======================================================
+\chapter{Ce qu'on savait déjà sur la cible}
+
+\section{Informations déclaratives}
+
+Avant le lancement de l’investigation numérique, certaines informations de base étaient déjà connues concernant la cible, identifiée sous le nom \textbf{Olivia S.}.  
+Ces informations provenaient de sources académiques et de recoupements publics.
+
+\begin{itemize}
+	\item \textbf{Nom :} Olivia S.
+	\item \textbf{Parcours académique :} Titulaire du \textit{GCE Advanced Level} obtenu en 2022,  à  \textbf{SBCBC}.
+	\item \textbf{Admission :} Intégration à l’\textbf{École Nationale Supérieure Polytechnique de Yaoundé (ENSPY)} la même année, dans la filière identifiée par le code \textbf{AHN}.
+	\item \textbf{Statut actuel :} Étudiante à l’ENSPY pour l’année académique \textbf{2024/2025}.
+\end{itemize}
+
+\section{Hypothèses initiales}
+
+\begin{enumerate}
+	\item Olivia S. maintient une activité numérique liée à son environnement académique (groupes ENSPY, réseaux étudiants).
+	\item Des traces d’activité sur les réseaux sociaux permettent de confirmer son identité et son parcours.
+	\item L’ingénierie sociale peut aider à évaluer la nature et la cohérence de sa présence numérique.
+\end{enumerate}
+
+
+
+% =======================================================
+\chapter{Méthodologie utilisée pour le traquer en ligne}
+
+\section{Approche générale}
+
+L’investigation s’inscrit dans une démarche d’\textbf{intelligence open source (OSINT)} fondée sur la recherche, la vérification et la corrélation d’informations accessibles publiquement.  
+Elle repose sur une approche systématique visant à reconstruire la présence numérique de la cible à partir de traces éparses et non intrusives.
+
+\begin{itemize}
+	\item \textbf{Type d’investigation :} OSINT / Analyse de métadonnées / Corrélation multi-plateforme.
+	\item \textbf{Méthodologie :} 
+	\begin{enumerate}
+		\item \textit{Collecte passive} des données ouvertes (sans interaction directe).
+		\item \textit{Enrichissement contextuel} à l’aide d’outils d’indexation et d’analyse.
+		\item \textit{Corrélation croisée} entre différentes plateformes pour valider les identités.
+		\item \textit{Archivage et documentation} des résultats (captures, empreintes).
+		\item \textit{Analyse structurée} visant à produire des conclusions vérifiables.
+	\end{enumerate}
+\end{itemize}
+
+\section{Outils et ressources mobilisés}
+
+Pour assurer la rigueur et la traçabilité de la recherche, plusieurs catégories d’outils ont été employées :
+
+\begin{itemize}
+	\item \textbf{Navigateurs et extensions :} \textit{Mozilla Firefox, Google Chrome}, complétés par des modules de capture et d’analyse d’en-têtes HTTP.
+	\item \textbf{Moteurs de recherche :} \textit{Google, DuckDuckGo}, avec utilisation de requêtes avancées (\texttt{Google Dorks}) pour un ciblage précis.
+	\item \textbf{Plateformes OSINT spécialisées :} \textit{Maltego, SpiderFoot, Hunter.io, Wayback Machine} pour la cartographie des liens numériques et l’historisation des pages.
+	\item \textbf{Réseaux sociaux :} \textit{Facebook, X (Twitter), LinkedIn, Instagram}, explorés à partir d’indices de pseudonymes et de connexions académiques.
+	\item \textbf{Analyse de métadonnées :} utilisation de \texttt{exiftool}, \texttt{strings} et \texttt{yt-dlp} pour extraire les données cachées des fichiers multimédias et publications en ligne.
+	\item \textbf{Archivage et intégrité :} documentation par \textit{captures d’écran}, exportations \textit{PDF} et génération de \textit{hachages SHA-256} garantissant la traçabilité des preuves.
+\end{itemize}
+
+\section{Procédure de collecte et d’analyse}
+
+La démarche suivie s’est déroulée en quatre grandes phases :
+
+\begin{enumerate}
+	\item \textbf{Recherche initiale :} identification des mots-clés pertinents (nom, pseudonymes, adresses mail, affiliations académiques) et repérage des premiers profils associés.
+	\item \textbf{Vérification et enrichissement :} confrontation des données issues de plusieurs plateformes afin de confirmer l’identité de la cible et d’enrichir son empreinte numérique.
+	\item \textbf{Analyse approfondie :} extraction de métadonnées, identification de la chronologie des publications et évaluation de la cohérence entre les différentes traces.
+	\item \textbf{Archivage et documentation :} conservation des résultats sous format horodaté, production de journaux de recherche et consignation des sources pour garantir la reproductibilité.
+\end{enumerate}
+
+L’ensemble de la procédure a été mené de manière éthique et conforme aux principes de confidentialité, sans recours à des techniques intrusives ni à des interactions directes avec la cible.
+
+
+% =======================================================
+\chapter{Résultats obtenus}
+
+\section{Inventaire des éléments trouvés}
+
+L’investigation menée autour de la cible \textbf{Olivia S.} a révélé une présence numérique relativement faible.  
+Les recherches sur les moteurs classiques et les plateformes sociales n’ont permis de retrouver que des traces indirectes, suggérant un profil discret, peu exposé publiquement et probablement prudent dans sa gestion de l’identité numérique.
+
+\begin{center}
+\begin{tabular}{@{}cllllll@{}}
+\toprule
+N° & Type & Source (URL) & Date & Emplacement  & Confiance \\
+\midrule
+1 & Profil académique & (LinkedIn / ENSPY) & 2024 & Yaoundé  & Élevée \\
+2 & Mention d’examen & (GCE Board 2022) & 2022 & Cameroun  & Élevée \\
+3 & Référence ENSPY & (Liste d’admission 2022) & 2022 & ENSPY  & Élevée \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Exemples d’extractions pertinentes}
+
+Malgré la rareté des traces personnelles directes, certaines informations contextuelles ont pu être confirmées :
+
+\begin{itemize}
+	\item \textbf{Profil académique :} le nom apparaît sur des listes officielles liées au \textit{GCE A 2022 (SBCBC)} et à l’\textit{ENSPY 2022 (AHN)}, confirmant une trajectoire académique cohérente.
+	\item \textbf{Affiliation actuelle :} la mention \textit{ENSPY (2024/2025)} a été repérée dans des documents institutionnels, suggérant une poursuite d’études en cours.
+	\item \textbf{Empreinte numérique :} absence de comptes sociaux associés aux pseudonymes habituels, ce qui traduit une stratégie de faible exposit
+\end{itemize}
+
+% =======================================================
+\chapter{Comparaison entre hypothèses et résultats}
+
+\section{Identité / Alias}
+
+\textbf{Ce qu’on savait :}  
+La cible, identifiée sous le nom \textbf{Olivia S.}, aurait obtenu le \textit{GCE Advanced Level} en 2022 (SBCBC) et intégré l’\textit{École Nationale Supérieure Polytechnique de Yaoundé (ENSPY)} la même année, dans la filière AHN.  
+Aucune information initiale ne faisait état d’un pseudonyme ou d’une activité notable sur les réseaux sociaux.
+
+\textbf{Ce que les preuves montrent :}  
+Les recherches OSINT confirment la présence du nom dans les bases académiques du \textit{GCE Board} et sur les listes officielles d’admission de l’ENSPY.  
+En revanche, aucune trace exploitable d’un alias ou d’un pseudonyme actif n’a été détectée sur les principales plateformes sociales (Facebook, Instagram, X, LinkedIn).
+
+\textbf{Conclusion :}  
+\textit{Hypothèse confirmée partiellement.}  
+L’identité réelle est validée par les sources institutionnelles, mais l’absence d’alias connus ou de comptes actifs empêche toute corrélation vers une présence numérique personnelle.
+
+\section{Localisation}
+
+\textbf{Ce qu’on savait :}  
+Olivia S. serait résidente à Yaoundé, probablement à proximité du campus de l’ENSPY, sans certitude sur le lieu exact.
+
+\textbf{Résultat obtenu :}  
+Les informations disponibles (mentions institutionnelles, périodes académiques, connexions réseau ENSPY) suggèrent bien une localisation dans la ville de \textbf{Yaoundé}.  
+Aucune métadonnée géographique (EXIF, IP, géotag) n’a été retrouvée dans les rares documents associés à la cible.
+
+\textbf{Niveau de confiance :}  
+\textbf{Élevé} pour la localisation générale (Yaoundé),  
+\textbf{faible} pour toute précision plus fine (quartier, résidence).
+
+\section{Synthèse générale}
+
+\begin{itemize}
+	\item \textbf{Hypothèses confirmées :}
+	\begin{itemize}
+		\item Obtention du GCE Advanced Level (SBCBC) en 2022.  
+		\item Admission à l’ENSPY (AHN) en 2022.  
+		\item Statut académique actif à l’ENSPY en 2024/2025.
+	\end{itemize}
+
+	\item \textbf{Hypothèses infirmées :}
+	\begin{itemize}
+		\item Existence d’un alias identifiable ou d’une forte présence sur les réseaux sociaux.  
+		\item Traces multimédias comportant des métadonnées exploitables.
+	\end{itemize}
+
+	\item \textbf{Points restant à vérifier :}
+	\begin{itemize}
+		\item Usage éventuel de pseudonymes non corrélés à l’identité réelle.  
+		\item Traces indirectes (commentaires, interactions tierces, bases de données secondaires).  
+		\item Éventuelles présences sur des plateformes professionnelles à accès restreint.
+	\end{itemize}
+\end{itemize}
+
+\bigskip
+\noindent
+En conclusion, les hypothèses de départ se trouvent globalement confirmées dans leur dimension académique, mais les données collectées soulignent la faible empreinte numérique de la cible.  
+Cette discrétion volontaire ou maîtrisée constitue un élément marquant de son profil, révélant une gestion prudente de son identité en ligne.
+
+% =======================================================
+
+% =======================================================
+\chapter{Conclusion et recommandations}
+
+\section*{Conclusion}
+
+Ce travail d’investigation numérique a permis de mettre en évidence l’importance d’une démarche méthodique, éthique et documentée dans la recherche d’informations en sources ouvertes (OSINT).  
+À travers une approche structurée — allant de la collecte passive à l’analyse corrélée — il a été possible d’établir une image cohérente, bien que limitée, de la présence numérique de la cible \textbf{Olivia S.}  
+
+Les résultats obtenus confirment l’identité et le parcours académique annoncés (GCE 2022, ENSPY 2022–2025), tout en révélant une empreinte numérique volontairement réduite.  
+Cette discrétion témoigne d’une conscience des enjeux liés à la vie privée et de la maîtrise des traces laissées en ligne.  
+Ainsi, ce cas illustre non seulement les limites techniques des investigations en l’absence de données publiques, mais aussi la nécessité d’une interprétation prudente des résultats — l’absence d’information pouvant elle-même constituer une information significative.  
+
+\section*{Recommandations}
+
+Afin d’améliorer la qualité, la fiabilité et l’éthique des investigations futures, plusieurs axes de progression peuvent être envisagés :
+
+\begin{itemize}
+	\item \textbf{Renforcer la vérification croisée des sources}  
+		Multiplier les points de comparaison entre bases de données publiques, archives web et plateformes sociales pour améliorer la fiabilité des corrélations.
+
+	\item \textbf{Automatiser l’archivage des preuves}  
+		Mettre en place des scripts ou outils d’automatisation (par exemple avec \texttt{SpiderFoot} ou \texttt{theHarvester}) permettant la sauvegarde systématique et horodatée des résultats.
+
+	\item \textbf{Adopter une veille OSINT continue}  
+		Mettre à jour régulièrement les données collectées pour observer l’évolution éventuelle du profil numérique de la cible ou l’apparition de nouvelles traces en ligne.
+
+	\item \textbf{Sensibiliser aux bonnes pratiques éthiques et légales}  
+		Veiller à respecter les cadres juridiques encadrant la collecte et l’utilisation des données publiques, tout en favorisant une culture de la confidentialité et de la responsabilité numérique.
+
+	\item \textbf{Documenter rigoureusement les démarches}  
+		Conserver les journaux de recherche, empreintes cryptographiques et sources originales pour garantir la traçabilité et la reproductibilité des analyses.
+\end{itemize}
+
+\bigskip
+\noindent
+En somme, cette investigation illustre la valeur ajoutée d’une approche OSINT disciplinée tout en soulignant ses limites face à des individus maîtrisant leur exposition numérique.  
+La prudence, la transparence méthodologique et le respect de l’éthique demeurent les piliers essentiels d’une enquête numérique crédible et responsable.
+
+
+% =======================================================
+
+\end{document}
