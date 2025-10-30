@@ -1,0 +1,231 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{libertine}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue,
+	citecolor=black
+}
+\setstretch{1.2}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\newcommand{\hsp}{\hspace{20pt}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\title{Rapport de configuration d'une infrastructure réseau fonctionnelle}
+\author{Belva MAKEU TENKU}
+\date{Octobre 2025}
+
+\begin{document}
+
+% ---------------- Page de titre ----------------
+\begin{titlepage}
+	\begin{sffamily}
+		\begin{center}
+			\includegraphics[scale=0.04]{logo_polytech.JPG}~\\[1.5cm]
+			\textsc{\LARGE ÉCOLE NATIONALE SUPÉRIEURE POLYTECHNIQUE DE YAOUNDÉ}\\[2cm]
+			\textsc{\Large Département de Génie Informatique}\\[2cm]
+			\textsc{\large Introduction aux Techniques d'Investigation Numérique}\\[1.5cm]
+			\HRule \\[0.4cm]
+			{ \huge \bfseries Rapport de configuration d'une infrastructure réseau fonctionnelle\\[0.4cm] }
+			\HRule \\[2cm]
+			\includegraphics[scale=0.2]{logo_polytech.JPG} \\[2cm]
+			\begin{minipage}{0.4\textwidth}
+				\begin{flushleft} \large
+					MAKEU TENKU STELY BELVA\\
+					CIN-4\\
+				\end{flushleft}
+			\end{minipage}
+			\begin{minipage}{0.4\textwidth}
+				\begin{flushright} \large
+					\emph{Superviseur :} M. \textsc{Thierry Minka}\\
+				\end{flushright}
+			\end{minipage}
+			\vfill
+		\end{center}
+	\end{sffamily}
+\end{titlepage}
+\tableofcontents
+\newpage
+
+% --- Introduction ---
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+Ce premier laboratoire a pour objectif de configurer une infrastructure réseau complète, fonctionnelle et sécurisée. 
+L’environnement comprend un routeur en frontière, une zone démilitarisée (DMZ) hébergeant un serveur web sous Linux, et un réseau local (LAN) 
+contenant un poste de travail Windows. Cette mise en place vise à fournir une base pour des activités d’investigation numérique simulant une entreprise victime d’un ransomware.
+
+% --- Objectifs du Lab ---
+\chapter{Objectif du Lab}
+Ce laboratoire permet de :
+\begin{itemize}
+    \item Configurer un réseau fonctionnel comprenant un équipement de frontière, un LAN et une DMZ ;
+    \item Mettre en place un serveur web accessible depuis l’intérieur et l’extérieur du réseau ;
+    \item Configurer les adresses IP, les interfaces réseau et les politiques de sécurité ;
+    \item Tester la connectivité et la disponibilité des ressources.
+\end{itemize}
+
+% --- Topologie et description ---
+\chapter{Topologie et Description du Réseau}
+\section{Schéma logique}
+\noindent
+Le réseau comporte trois segments principaux : un réseau externe (Internet), une DMZ, et un réseau local (LAN). 
+Le schéma ci-dessous illustre l’architecture mise en œuvre.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{schema_lab1.png}
+    \caption{Topologie du réseau dans GNS3}
+\end{figure}
+
+\section{Description des composants}
+\begin{itemize}
+    \item \textbf{Routeur :} assure la connectivité entre le réseau externe et le réseau interne ;
+    \item \textbf{Switch manageable :} permet la segmentation en sous-réseaux et la communication inter-réseaux ;
+    \item \textbf{Pare-feu :} contrôle les flux entre le LAN et la DMZ ;
+    \item \textbf{Serveur Linux :} héberge une application web ;
+    \item \textbf{Poste Windows :} simule un utilisateur interne.
+\end{itemize}
+
+% --- Matériel et logiciels ---
+\chapter{Matériel et Logiciels Utilisés}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|m{4cm}|m{5cm}|m{2cm}|m{3cm}|}
+\hline
+\textbf{Composant} & \textbf{Logiciel / Matériel} & \textbf{Version} & \textbf{Rôle} \\ \hline
+Routeur & Cisco IOL  & - & Équipement de frontière \\ \hline
+Pare-feu & FortiGate  & - & Sécurisation de la DMZ \\ \hline
+Switch & Switch manageable IOL & - & Communication inter-réseaux \\ \hline
+Machine virtuelle Windows & Windows 10 & - & Poste client LAN \\ \hline
+Machine virtuelle Linux & Ubuntu / Kali linux & - & Serveur Web \\ \hline
+Logiciel de virtualisation & VMware & - & Hébergement des VM \\ \hline
+Simulateur réseau & GNS3 & - & Simulation de l’infrastructure \\ \hline
+\end{tabular}
+\caption{Matériel et logiciels utilisés dans le Lab}
+\end{table}
+
+% --- Étapes de réalisation ---
+\chapter{Étapes de Réalisation}
+
+\section{Création des Machines Virtuelles}
+\subsection*{Machine Windows 10}
+\begin{itemize}
+    \item Disque dur : 10 Go
+    \item RAM : 2 Go
+    \item Données copiées : 2 Go de fichiers variés
+    \item Rôle : Poste de travail utilisateur sur le LAN
+\end{itemize}
+
+\subsection*{Machine Linux (serveur web)}
+\begin{itemize}
+    \item Disque dur : 10 Go
+    \item RAM : 2 Go
+    \item Distribution : Ubuntu 
+    \item Application web déployée via Django
+\end{itemize}
+
+\section{Création de l’Infrastructure dans GNS3}
+\begin{enumerate}
+    \item Installation de GNS3 et création du projet \texttt{LAB1}.
+    \item Ajout d’un routeur (équipement de frontière).
+    \item Configuration des interfaces :
+    \begin{itemize}
+        \item \texttt{R-Eth0} : Adresse publique (Internet)
+        \item \texttt{R-Eth1} : Adresse privée (LAN)
+    \end{itemize}
+    \item Ajout d’un switch manageable connecté au routeur.
+    \item Configuration :
+    \begin{itemize}
+        \item \texttt{S-Eth0} connecté à \texttt{R-Eth1}
+        \item \texttt{S-Eth1} connecté au pare-feu (\texttt{F-Eth0})
+        \item \texttt{S-Eth2} connecté au poste Windows
+    \end{itemize}
+    \item Ajout d’un pare-feu :
+    \begin{itemize}
+        \item \texttt{F-Eth0} : vers le switch (DMZ)
+        \item \texttt{F-Eth1} : vers le serveur web Linux
+    \end{itemize}
+\end{enumerate}
+
+\section{Tests de Connectivité}
+\begin{itemize}
+    \item Ping entre le poste Windows et le serveur Linux ;
+    \item Accès HTTP à l’application web depuis le LAN ;
+    \item Vérification du trafic à travers le pare-feu ;
+    \item Test de connectivité externe (Internet simulé).
+\end{itemize}
+
+% --- Résultats ---
+\chapter{Résultats et Vérifications}
+Les tests effectués confirment la fonctionnalité de l’infrastructure :
+\begin{itemize}
+    \item Le poste Windows accède correctement à l’application web du serveur Linux ;
+    \item Le pare-feu filtre les flux entre le LAN et la DMZ ;
+    \item Le routage et les interfaces sont opérationnels ;
+    \item L'application est fonctionnel sur le serveur web.
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{info_kali.png}
+    \caption{configuration de kali}
+    \label{fig:placeholder}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{interface_pare_feu.png}
+    \caption{interface du parefeu}
+    \label{fig:placeholder}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{policy_pare_feu.png}
+    \caption{policy du parefeu}
+    \label{fig:placeholder}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{serveur_ubuntu.png}
+    \caption{serveur ubuntu}
+    \label{fig:placeholder}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{app_kali.png}
+    \caption{application sur kali linux}
+    \label{fig:placeholder}
+\end{figure}
+\begin{figure}
+        \centering
+        \includegraphics[width=0.90\linewidth]{image.png}
+        \caption{Accès à l’application web depuis le poste Windows}
+        \label{fig:placeholder}
+    \end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.85\textwidth]{test_web_access.png}
+    \caption{ping vers le serveur web}
+\end{figure}
+
+
+
+% --- Conclusion ---
+\chapter*{Conclusion}
+\addcontentsline{toc}{chapter}{Conclusion}
+Ce laboratoire a permis de mettre en œuvre un environnement réseau complet, intégrant les notions de routage, segmentation, sécurisation et virtualisation. 
+Cette base pourra être utilisée pour les travaux d’investigation numérique à venir, notamment la simulation d’attaques et l’analyse post-incident.
+
+\end{document}
