@@ -1,0 +1,288 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{tikz}
+\geometry{margin=2.5cm}
+% Ajoute ceci dans le préambule de ton document LaTeX
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codebg}{rgb}{0.95,0.95,0.95}
+\definecolor{codeframe}{rgb}{0.8,0.8,0.8}
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    commentstyle=\color{green!50!black},
+    backgroundcolor=\color{codebg},
+    frame=single,
+    rulecolor=\color{codeframe},
+    breaklines=true,
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\tiny,
+    captionpos=b
+}
+
+
+\title{Protocole SÉRÉNITÉ : Opposabilité Conditionnelle de Preuves Censurées}
+\author{MAKEU TENKU STELY BELVA }
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction}
+Dans un contexte où la protection de la confidentialité des documents numériques est cruciale, le protocole \textbf{SÉRÉNITÉ} propose une solution basée sur le trilemme CRO :
+\begin{itemize}
+    \item \textbf{C (Confidentialité)} : protéger les informations sensibles dans un document publié.
+    \item \textbf{R (Fiabilité)} : garantir que le document original peut être reconstruit fidèlement.
+    \item \textbf{O (Opposabilité conditionnelle)} : assurer la valeur juridique de la preuve uniquement après une procédure de vérification contrôlée.
+\end{itemize}
+Le protocole résout le problème de l'opposabilité juridique des preuves censurées tout en préservant la vie privée des parties.
+
+\section{Fondements théoriques}
+
+\subsection{Opposabilité conditionnelle}
+\textbf{Définition :} Soit $D_{\text{Original}}$ le document original et $D_{\text{Censuré}}$ le document publié après censure. L’opposabilité conditionnelle stipule que la valeur légale de $D_{\text{Censuré}}$ n’est établie que si la reconstruction produit le document original et satisfait l’égalité cryptographique :
+\begin{equation}
+    H(D_{\text{Reconstruit}}) = H(D_{\text{Original}})
+\end{equation}
+où $H$ est une fonction de hachage cryptographique sécurisée (SHA-3-256 par exemple).
+
+\subsection{Objectifs du protocole}
+\begin{itemize}
+    \item \textbf{Fiabilité (R) :} assurer que $H(D_{\text{Original}})$ n’est vérifiable que via une reconstruction réversible.
+    \item \textbf{Confidentialité (C) :} masquer les données sensibles contenues dans $D_{\text{Censuré}}$.
+    \item \textbf{Opposabilité (O) :} conditionnée par la vérification cryptographique de l’égalité $H(D_{\text{Reconstruit}}) = H(D_{\text{Original}})$.
+\end{itemize}
+
+\subsection{Notations mathématiques}
+\begin{align*}
+D_{\text{Original}} &\in \{0,1\}^* \quad \text{(document complet)} \\
+D_{\text{Censuré}} &\in \{0,1\}^* \quad \text{(document publié)} \\
+H &: \{0,1\}^* \rightarrow \{0,1\}^{256} \quad \text{(fonction de hachage)} \\
+Enc_K(M) &\text{ : chiffrement symétrique sous clé $K$} \\
+Dec_K(C) &\text{ : déchiffrement correspondant} \\
+\text{MerkleTree}(B_1,\dots,B_m) &\rightarrow R \quad \text{(racine Merkle)} \\
+SK_i &\text{ : share $i$ dans un schéma Shamir $(t,n)$} \\
+t, n &\text{ : seuil et nombre total d’autorités} \\
+\text{Sign}_{sk}(M) &\text{ : signature numérique de $M$ avec clé privée $sk$} 
+\end{align*}
+
+\section{Protocole SÉRÉNITÉ}
+
+\subsection{Acteurs}
+\begin{itemize}
+    \item \textbf{Auteur} : crée $D_{\text{Original}}$.
+    \item \textbf{Publieur} : publie $D_{\text{Censuré}}$.
+    \item \textbf{Autorités de révocation} : $n$ entités (ex. juges ou administrateurs) qui détiennent des parts du secret.
+    \item \textbf{Vérificateur / Tribunal} : récupère les parts pour établir l’opposabilité.
+\end{itemize}
+
+\subsection{Structure du document publié}
+Le document publié contient :
+\begin{equation*}
+    \text{DCensuré} = \{ \text{blocs non sensibles}, \text{ciphertexts des blocs sensibles}, \text{Merkle root}, \text{meta chiffrée}, \text{signature} \}
+\end{equation*}
+
+\subsection{Formalisation mathématique}
+
+\subsubsection{Étape 1 : Publication}
+\begin{enumerate}[label=(\alph*)]
+    \item Diviser $D_{\text{Original}}$ en $m$ blocs : $D_{\text{Original}} = \{B_1, \dots, B_m\}$.
+    \item Pour chaque bloc sensible $B_j$, générer une clé aléatoire $K_j$ et calculer :
+    \begin{equation}
+        C_j = Enc_{K_j}(B_j)
+    \end{equation}
+    \item Remplacer les blocs sensibles par $C_j$ et construire $D_{\text{Censuré}}$.
+    \item Construire la racine Merkle :
+    \begin{equation}
+        R = \text{MerkleTree}(D_{\text{Censuré}})
+    \end{equation}
+    \item Calculer le hachage original :
+    \begin{equation}
+        H_{\text{Original}} = H(D_{\text{Original}})
+    \end{equation}
+    \item Préparer les métadonnées :
+    \begin{equation}
+        \text{meta} = \{ H_{\text{Original}}, R, \text{timestamp}, \text{auteur} \}
+    \end{equation}
+    \item Générer une clé maître $K_{\text{meta}}$ et chiffrer les métadonnées :
+    \begin{equation}
+        E_{\text{meta}} = Enc_{K_{\text{meta}}}(\text{meta})
+    \end{equation}
+    \item Distribuer $K_{\text{meta}}$ via un schéma Shamir $(t,n)$ :
+    \begin{equation}
+        SK_i = \text{ShamirShare}_i(K_{\text{meta}}), \quad i=1,\dots,n
+    \end{equation}
+    Chaque $SK_i$ est chiffré sous la clé publique de l’autorité correspondante.
+    \item Signer l’ensemble :
+    \begin{equation}
+        \sigma_{\text{author}} = \text{Sign}_{sk_{\text{author}}}(R || H(E_{\text{meta}}))
+    \end{equation}
+\end{enumerate}
+
+\subsubsection{Étape 2 : Révocation conditionnelle}
+\begin{enumerate}[label=(\alph*)]
+    \item Collecter au moins $t$ parts $SK_i$ signées par les autorités.
+    \item Reconstruire la clé maître $K_{\text{meta}}$ :
+    \begin{equation}
+        K_{\text{meta}} = \text{ShamirReconstruct}(SK_1, \dots, SK_t)
+    \end{equation}
+    \item Déchiffrer les métadonnées :
+    \begin{equation}
+        \text{meta} = Dec_{K_{\text{meta}}}(E_{\text{meta}})
+    \end{equation}
+    \item Récupérer les clés $K_j$ des blocs sensibles et reconstruire $D_{\text{Reconstruit}}$ :
+    \begin{equation}
+        D_{\text{Reconstruit}} = \bigcup_{j=1}^m B_j
+    \end{equation}
+    \item Vérifier l’égalité cryptographique :
+    \begin{equation}
+        H(D_{\text{Reconstruit}}) \stackrel{?}{=} H_{\text{Original}}
+    \end{equation}
+\end{enumerate}
+
+\section{Analyse de sécurité}
+
+\subsection{Confidentialité (C)}
+Les fragments sensibles sont chiffrés par des clés individuelles $K_j$ ; la clé maître $K_{\text{meta}}$ est distribuée via un schéma Shamir $(t,n)$. Si moins de $t$ autorités coopèrent, les blocs sensibles restent confidentiels.
+
+\subsection{Fiabilité (R)}
+La reconstruction complète de $D_{\text{Original}}$ est garantie par :
+\begin{equation}
+    H(D_{\text{Reconstruit}}) = H(D_{\text{Original}})
+\end{equation}
+et par la signature de l’auteur sur la racine Merkle et le hash des métadonnées.
+
+\subsection{Opposabilité conditionnelle (O)}
+L’opposabilité légale n’est établie que si le processus de reconstruction est réalisé avec succès et que l’égalité $H(D_{\text{Reconstruit}}) = H(D_{\text{Original}})$ est vérifiée.
+
+\section{Cas d’usage}
+\begin{itemize}
+    \item \textbf{Journalisme d’investigation} : publication de documents censurés protégeant les sources.
+    \item \textbf{Lanceurs d’alerte} : divulgation partielle sécurisée, reconstruction possible sous contrôle légal.
+    \item \textbf{Archivage légal} : documents accessibles sous conditions strictes pour vérification.
+\end{itemize}
+
+\section{Implémentation Python du protocole SÉRÉNITÉ}
+
+Le protocole \textbf{SÉRÉNITÉ} peut être simulé avec Python pour gérer le chiffrement des blocs sensibles, le Merkle Tree, le partage de la clé maître via Shamir et la reconstruction conditionnelle.
+
+\begin{lstlisting}[caption={Implémentation Python du protocole SÉRÉNITÉ}]
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+from secretsharing import SecretSharer
+import merkletools
+import os
+import json
+import base64
+import hashlib
+
+# Fonctions utilitaires
+def hash_data(data: bytes) -> str:
+    digest = hashlib.sha3_256(data).hexdigest()
+    return digest
+
+def aes_encrypt(key: bytes, plaintext: bytes) -> bytes:
+    aesgcm = AESGCM(key)
+    nonce = os.urandom(12)
+    ct = aesgcm.encrypt(nonce, plaintext, None)
+    return nonce + ct
+
+def aes_decrypt(key: bytes, ciphertext: bytes) -> bytes:
+    nonce, ct = ciphertext[:12], ciphertext[12:]
+    aesgcm = AESGCM(key)
+    return aesgcm.decrypt(nonce, ct, None)
+
+# Création d'un document exemple
+DOriginal = [
+    {"index":0, "content": b"Texte public 1", "sensitive": False},
+    {"index":1, "content": b"Nom secret", "sensitive": True},
+    {"index":2, "content": b"Texte public 2", "sensitive": False},
+    {"index":3, "content": b"Numéro confidentiel", "sensitive": True},
+]
+
+# Chiffrement des blocs sensibles
+DCensuré = []
+secret_keys_map = {}
+for block in DOriginal:
+    if block["sensitive"]:
+        K = AESGCM.generate_key(bit_length=256)
+        C = aes_encrypt(K, block["content"])
+        DCensuré.append({"index": block["index"], "content": base64.b64encode(C).decode(), "placeholder": True})
+        secret_keys_map[block["index"]] = base64.b64encode(K).decode()
+    else:
+        DCensuré.append({"index": block["index"], "content": block["content"].decode(), "placeholder": False})
+
+# Création du Merkle Tree
+mt = merkletools.MerkleTools(hash_type="sha3_256")
+for block in DCensuré:
+    mt.add_leaf(block["content"], True)
+mt.make_tree()
+M_root_cens = mt.get_merkle_root()
+
+# Hachage du document original
+doc_bytes = b"".join([block["content"] if not block["sensitive"] else base64.b64decode(aes_encrypt(AESGCM.generate_key(bit_length=256), block["content"])) for block in DOriginal])
+HOriginal = hash_data(doc_bytes)
+
+# Métadonnées et clé maître
+meta = {"HOriginal": HOriginal, "MerkleRoot": M_root_cens, "author": "Belva Makeu"}
+K_meta = AESGCM.generate_key(bit_length=256)
+meta_json = json.dumps(meta).encode()
+E_meta = aes_encrypt(K_meta, meta_json)
+
+# Shamir Secret Sharing
+n, t = 5, 3
+hex_key = K_meta.hex()
+shares = SecretSharer.split_secret(hex_key, t, n)
+
+# Signature Ed25519
+sk = Ed25519PrivateKey.generate()
+sig = sk.sign(E_meta)
+
+# Publication
+publication = {
+    "DCensuré": DCensuré,
+    "MerkleRoot": M_root_cens,
+    "E_meta": base64.b64encode(E_meta).decode(),
+    "Shares": shares,
+    "Signature": base64.b64encode(sig).decode()
+}
+print(json.dumps(publication, indent=4))
+
+# Reconstruction conditionnelle
+selected_shares = shares[:t]
+reconstructed_hex = SecretSharer.recover_secret(selected_shares)
+K_meta_reconstructed = bytes.fromhex(reconstructed_hex)
+meta_decrypted = aes_decrypt(K_meta_reconstructed, base64.b64decode(publication["E_meta"]))
+meta_final = json.loads(meta_decrypted)
+print(meta_final)
+\end{lstlisting}
+
+
+\section{Conclusion}
+Le protocole \textbf{SÉRÉNITÉ} est une solution innovante permettant la publication de documents censurés tout en garantissant une opposabilité conditionnelle. Le trilemme CRO est respecté grâce à :
+\begin{itemize}
+    \item Le chiffrement des données sensibles pour la confidentialité (C),
+    \item La reconstruction réversible pour la fiabilité (R),
+    \item La dépendance à la révocation par un seuil d’autorités pour l’opposabilité (O).
+\end{itemize}
+
+
+
+\end{document}
