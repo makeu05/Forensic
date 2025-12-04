@@ -1,0 +1,467 @@
+\documentclass[12pt,a4paper]{report}
+
+% ---- Packages ----
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{caption}
+
+% ---- Mise en page ----
+\geometry{margin=2.5cm}
+\setstretch{1.25}
+
+% ---- En-têtes/pieds de page ----
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Projet de simulation d'incident numérique} % En-tête mis à jour pour englober toutes les phases
+\rhead{Rapport Complet : Phases 1 à 3}
+\cfoot{\thepage}
+
+% ---- Titres ----
+\titleformat{\chapter}{\Huge\bfseries}{\thechapter.}{15pt}{}
+\titleformat{\section}{\Large\bfseries}{\thesection}{10pt}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{10pt}{}
+
+% ---- Début du document ----
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    {\Huge \textbf{Rapport de Synthèse et d'Analyse}}\\[0.5cm]
+    {\LARGE Simulation d'un incident numérique en milieu universitaire}\\[1cm]
+    {\Large Couverture des \textbf{Phases} : Création, Plainte et Mandat d'Expertise}\\[0.5cm]
+    {\Large Auteur : \textit{MAKEU TENKU STELY BELVA}}\\[0.2cm]
+    {\Large Encadrant : \textit{M. MINKA THIERRY}}\\[1.5cm]
+    {\Large Date : \today}\\[3cm]
+    \vfill
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% ----------------------------------------------------------
+\chapter*{Introduction générale}
+\addcontentsline{toc}{chapter}{Introduction générale}
+
+Dans le cadre du projet pédagogique consacré à l’analyse d’incidents numériques, ce rapport synthétise l'ensemble des travaux réalisés au cours des trois phases de la simulation. L'objectif était de reproduire de manière réaliste un scénario de cyberharcèlement et de diffamation en milieu universitaire, allant de la génération des preuves numériques jusqu'à l'initiation des procédures judiciaires (plainte et mandat d'expertise).
+
+Ce rapport détaille la **Phase 1** (création de l'environnement et génération des preuves), la **Phase 2** (rédaction de la plainte par la victime) et la **Phase 3** (établissement du mandat d'expertise judiciaire), assurant ainsi une couverture complète du cycle de vie d'un incident numérique.
+
+% ----------------------------------------------------------
+\chapter{Phase 1 : Création et Recueil des Preuves}
+
+\section{Contexte et objectifs de la phase}
+Le projet simule une situation où un groupe d'étudiants utilise un groupe WhatsApp pour échanger des messages diffamatoires, des rumeurs et des contenus portant atteinte à l’image d’un enseignant.
+
+Les objectifs de cette première phase étaient de :
+\begin{itemize}
+    \item Maîtriser la création d’un environnement numérique isolé pour la simulation.
+    \item Générer des conversations fictives mais réalistes.
+    \item Comprendre le fonctionnement de l’exportation de données WhatsApp.
+    \item Constituer un dossier de preuves initial (captures, logs, exports).
+\end{itemize}
+
+\section{Mise en place du groupe WhatsApp}
+
+\subsection{Tableau récapitulatif des participants fictifs}
+Un groupe WhatsApp intitulé \textit{« Groupe Simulation Incident »} a été créé avec les participants suivants :
+\begin{longtable}{|p{3cm}|p{4cm}|p{6cm}|}
+\hline
+\textbf{Nom fictif} & \textbf{Numéro} & \textbf{Rôle dans le scénario} \\
+\hline
+Étudiant A & +123456001 & Diffusion de rumeurs \\
+\hline
+Étudiant B & +123456002 & Partage de captures incriminantes \\
+\hline
+Étudiant C & +123456003 & Insultes et provocations \\
+\hline
+Enseignant (victime) & -- & Non présent dans le groupe \\
+\hline
+\end{longtable}
+
+\subsection{Chronologie synthétique des messages}
+Les messages générés ont permis d'établir une chronologie précise des faits, utilisée comme base de l'enquête :
+
+\begin{itemize}
+    \item \textbf{16:18} – Création du groupe et ajout de l'Étudiant 2 ;
+    \item \textbf{16:21} – Insulte directe envers l'enseignant ("enseignant stupide") ;
+    \item \textbf{16:22} – Diffusion de la rumeur de corruption ;
+    \item \textbf{16:23} – Annonce du partage d'une capture d'écran ;
+    \item \textbf{16:33} – Partage effectif du fichier image (Capture d'écran) ;
+    \item \textbf{16:34} – Réaction et relance de la discussion par l'Étudiant 1.
+\end{itemize}
+
+\section{Livrables numériques}
+Les livrables produits constituent le corpus de preuves initial pour les phases judiciaires :
+\begin{itemize}
+    \item **Captures d’écran** des messages incriminants, de la liste des participants et du partage de fichiers.
+    \item **Export complet de l'historique WhatsApp** (fichier \texttt{.txt}) incluant les métadonnées de temps et d'expéditeur (voir Annexe B).
+\end{itemize}
+
+% ----------------------------------------------------------
+\chapter{Phase 2 : Dépôt de la plainte}
+
+\section{Contexte de la plainte}
+Suite aux échanges diffamatoires et insultants constatés, l'enseignant victime des propos et accusations décide de porter plainte auprès du Procureur de la République.
+
+\section{Fondements juridiques et qualifications}
+Les faits reprochés sont qualifiés comme suit (adapté à la législation locale, ex. Code Pénal Camerounais ou général) :
+
+\begin{itemize}
+    \item \textbf{Diffamation} : Imputation d'un fait précis portant atteinte à l'honneur (accusations de corruption).
+    \item \textbf{Injure publique} : Expressions outrageantes ne contenant pas d'imputation de fait précis (qualificatifs de « stupide », etc.).
+    \item \textbf{Atteinte à l'honneur et à la réputation}.
+    \item \textbf{Diffusion de fausses informations} ou \textbf{Cybercriminalité} (selon les textes applicables).
+\end{itemize}
+
+\section{Structure et Demandes de la Plainte Formelle}
+La plainte est structurée pour satisfaire aux exigences du droit pénal, détaillant l'identification du plaignant, l'exposé chronologique des faits, la qualification juridique, et les preuves annexées.
+
+\subsection{Demandes du plaignant}
+Le plaignant sollicite notamment :
+\begin{itemize}
+    \item L'ouverture d'une enquête judiciaire.
+    \item La désignation d'un \textbf{expert judiciaire en investigation numérique}.
+    \item L'analyse technique des preuves numériques.
+    \item Les poursuites pénales contre les auteurs identifiés et la réparation du préjudice.
+\end{itemize}
+
+\subsection{Modèle de plainte}
+\begin{center}
+\textbf{PLAINTE AVEC CONSTITUTION DE PARTIE CIVILE}
+\end{center}
+
+\vspace{0.5cm}
+
+\noindent
+À Monsieur le Procureur de la République\\
+Près le Tribunal de Première Instance de [Ville]
+
+\vspace{0.5cm}
+
+\noindent
+\textbf{De la part de :} Monsieur/Madame [NOM Prénom], Enseignant-chercheur
+
+\vspace{0.5cm}
+
+\noindent
+\textbf{Objet : Plainte pour diffamation, injure publique et atteinte à l'honneur}
+
+\vspace{0.3cm}
+
+\noindent
+\textbf{I. EXPOSÉ DES FAITS}
+
+Le 04 décembre 2025, le plaignant a été informé d'un groupe WhatsApp où des propos diffamatoires et injurieux ont été tenus à son encontre. La chronologie des faits est la suivante :
+
+\begin{itemize}
+    \item Le 04/12/2025 à 16h21 : Publication de propos injurieux me qualifiant d'\textit{« enseignant stupide »}
+    \item Le 04/12/2025 à 16h22 : Diffusion d'accusations de corruption affirmant que je \textit{« recevrais souvent de l'argent de la part des étudiants pour les notes »}
+    \item Le 04/12/2025 à 16h33 : Partage effectif d'un fichier image prétendument incriminant
+\end{itemize}
+Ces propos graves ont été tenus en public (dans le groupe) et portent atteinte à mon honneur et ma considération professionnelle.
+
+\vspace{0.3cm}
+
+\noindent
+\textbf{II. QUALIFICATION JURIDIQUE DES FAITS}
+Les actes sont qualifiés de Diffamation publique, Injure publique, Atteinte à l'honneur et Diffusion de fausses informations.
+
+\vspace{0.3cm}
+
+\noindent
+\textbf{III. PREUVES ANNEXÉES}
+(Annexe 1 : Captures d'écran ; Annexe 2 : Export complet ; Annexe 3 : Fichier image falsifié)
+
+\vspace{0.3cm}
+
+\noindent
+\textbf{IV. DEMANDES}
+Le plaignant sollicite l'ouverture d'une enquête, la désignation d'un expert judiciaire en investigation numérique, et l'engagement de poursuites pénales contre les auteurs identifiés.
+
+\vspace{1cm}
+
+\noindent
+Fait à [Ville], le \today
+
+\vspace{1.5cm}
+
+\noindent
+Signature du plaignant
+
+% ----------------------------------------------------------
+\chapter{Phase 3 : Mandat de l'expert judiciaire}
+
+\section{Contexte et Rôle de l'Expert}
+Suite à la plainte, le Procureur de la République ouvre une enquête préliminaire et désigne un expert judiciaire en investigation numérique. Le rôle de cet expert est d'apporter des éclaircissements techniques, d'authentifier les preuves et d'établir les responsabilités sur la base des articles du Code de procédure pénale.
+
+\section{Objet de la mission}
+La mission de l'expert est de procéder à l'analyse technique et forensique des éléments numériques.
+
+\section{Questions posées à l'expert}
+L'expert doit notamment répondre aux questions suivantes :
+
+\begin{enumerate}
+    \item \textbf{Authentification des preuves :} Les exports et captures sont-ils authentiques et exempts de manipulation ?
+    \item \textbf{Analyse des métadonnées :} Confirmer la chronologie des événements (date, heure, expéditeur) à partir des métadonnées.
+    \item \textbf{Identification des auteurs :} Identifier formellement les numéros et les auteurs des messages incriminés et évaluer le degré de participation.
+    \item \textbf{Analyse du fichier image partagé :} Déterminer si le fichier (`IMG-20251204-WA0002.jpg`) a été manipulé et, le cas échéant, identifier l'auteur de cette manipulation.
+    \item \textbf{Analyse technique du groupe :} Identifier le créateur du groupe, la liste complète des participants et s'il y a eu des suppressions de messages.
+\end{enumerate}
+
+\chapter{Phase 4 : Exécution de l'expertise judiciaire}
+
+\section{Contexte et objectifs du mandat}
+
+Cette phase correspond à l'exécution pratique du mandat d'expertise délivré par le Procureur (Phase 3). L'objectif est d'appliquer les méthodes d'investigation numérique pour analyser les preuves collectées (exports, captures d'écran, fragments) et répondre aux questions posées par l'autorité mandante concernant l'authenticité des faits et l'identification des responsabilités.
+
+\section{Méthodologie de l'investigation numérique}
+
+L'analyse forensique a suivi un protocole rigoureux pour garantir l'intégrité et la traçabilité des preuves 
+
+[Image of digital forensics investigation process]
+.
+
+\subsection{Collecte des preuves}
+\begin{itemize}
+    \item \textbf{Réception des éléments :} Le dossier de preuves initial (captures d'écran, export \texttt{.txt} du groupe \textit{cours2025}, fichiers images) fourni par \textbf{M. X} a été réceptionné.
+    \item \textbf{Saisie et sécurisation (Simulation) :} La saisie des appareils numériques des mis en cause (Étudiant 1 et Étudiant 2) a été simulée.
+    \item \textbf{Préservation :} Création d'images forensiques des supports (simulation avec un outil comme FTK Imager) et génération d’\textbf{empreintes hachées (MD5/SHA256)} pour garantir l’intégrité des données pendant le transport et l'analyse.
+\end{itemize}
+
+\subsection{Analyse des données et authentification}
+\begin{itemize}
+    \item \textbf{Extraction et Analyse des messages :} Utilisation d'outils d'investigation (simulation de Cellebrite UFED) pour analyser les bases de données (simulées) de messagerie et valider la cohérence de l'export \texttt{.txt}.
+    \item \textbf{Authentification des captures d’écran :} Vérification des métadonnées (simulation avec \textbf{ExifTool}) des fichiers images fournis par M. X.
+    \item \textbf{Détection des manipulations :} Analyse des journaux système et des blocs libres (simulation) pour détecter des traces d'effacement ou de modification de messages par les auteurs présumés.
+    \item \textbf{Identification des auteurs et chaîne de diffusion :} Corrélation des numéros de téléphone (fictifs) avec les messages incriminés et analyse de la propagation des rumeurs.
+\end{itemize}
+
+\subsection{Documentation et traçabilité}
+Un \textbf{Journal des actions} détaillé a été tenu pour chaque étape de la collecte et de l'analyse, assurant la traçabilité complète de l'expertise.
+
+\section{Résultats de l'expertise}
+
+\subsection{Authenticité des preuves}
+\begin{itemize}
+    \item Les \textbf{captures d'écran} et l'export \texttt{.txt} fournis par M. X sont jugés \textbf{authentiques}.
+    \item Les métadonnées confirment que les captures ont été réalisées le \textbf{04/12/2025} et ne présentent \textbf{aucun signe de falsification} ou de retouche avancée.
+\end{itemize}
+
+\subsection{Identification des auteurs et messages incriminés}
+Les messages diffamatoires et injurieux ont été émis dans le groupe \textit{cours2025} selon la chronologie et la qualification suivantes :
+
+\begin{longtable}{|p{2cm}|p{2.5cm}|p{8cm}|p{3cm}|}
+\hline
+\textbf{Heure} & \textbf{Auteur identifié} & \textbf{Contenu incriminant} & \textbf{Qualification} \\
+\hline
+\endhead
+\hline
+\textbf{16:21} & Étudiant 2 & \textit{"...il est d'abord un enseignant stupide"} & Injure publique \\
+\hline
+\textbf{16:22} & Étudiant 2 & \textit{"...il paraît qu'il recoit souvent de l'argent..."} & Diffamation \\
+\hline
+\textbf{16:33} & Étudiant 2 & Partage de l'image (\texttt{IMG-20251204-WA0002.jpg}). & Diffusion de fausse preuve \\
+\hline
+\textbf{16:34} & Étudiant 1 & \textit{"...donc ce type est un corrompu hein..."} & Diffamation / Validation \\
+\hline
+\end{longtable}
+
+\subsection{Anomalies et tentatives de dissimulation}
+\begin{itemize}
+    \item Des tentatives d’effacement ont été identifiées sur le support numérique de l'\textbf{Étudiant 2} (auteur principal des propos).
+    \item L’analyse des blocs libres (simulation) a permis de retrouver des \textbf{fragments de messages supprimés}, confirmant l'intention de l'Étudiant 2 de dissimuler des preuves.
+    \item \textbf{Chaîne de diffusion :} Le groupe \textit{cours2025} a servi de point de départ. L'Étudiant 1 et l'Étudiant 2 ont été identifiés comme les principaux validateurs et contributeurs à la propagation de la rumeur.
+\end{itemize}
+
+\section{Conclusions de l'expertise}
+
+\subsection{Synthèse des responsabilités}
+\begin{itemize}
+    \item L'\textbf{Étudiant 2} est l'auteur principal des \textbf{injures} et de la \textbf{diffamation} par allégation de faits de corruption, ainsi que de la diffusion du fichier image prétendument falsifié. La tentative de suppression des messages établit une volonté d'obstruction.
+    \item L'\textbf{Étudiant 1} est responsable de la \textbf{validation} et de l'\textbf{amplification} des propos diffamatoires au sein du groupe.
+\end{itemize}
+
+\subsection{Avis sur la matérialité des faits}
+\begin{itemize}
+    \item Les faits de \textbf{diffamation}, \textbf{injures publiques} et \textbf{diffusion de fausses informations} via les TIC sont \textbf{avérés} et les preuves recueillies \textbf{corroborent} intégralement les allégations de \textbf{M. X}.
+    \item Les messages ont causé un préjudice significatif à M. X, portant atteinte à sa dignité et à sa réputation professionnelle.
+\end{itemize}
+
+\vspace{1cm}
+
+\noindent
+Fait à : \textbf{Yaoundé}
+Le : \textbf{\today}
+
+\vspace{1.5cm}
+
+\noindent
+\textbf{L'Expert Judiciaire en Investigation Numérique}
+
+\vspace{1.5cm}
+
+\noindent
+\textbf{[MAKEU BELVA]}
+
+\section*{Annexes de l'expertise }
+\addcontentsline{toc}{section}{Annexes de l'expertise}
+\begin{itemize}
+    \item Copies des preuves numériques (Captures d’écran authentifiées).
+    \item Logs d’analyse des métadonnées (dates, expéditeurs, transferts).
+    \item Journal de collecte et d’actions (traçabilité).
+    \item Fragments de messages supprimés récupérés (preuve de dissimulation).
+\end{itemize}
+
+
+
+
+
+\chapter{Phase 5 : Conduite des interrogatoires}
+
+\section{Objectifs et contexte}
+
+La Phase 5 simule la procédure d'audition des suspects (Étudiant 1, Étudiant 2) et des témoins, menée suite à la confirmation des faits par l'expertise judiciaire (Phase 4). L'objectif est de recueillir des aveux, des explications sur les intentions et la chaîne de diffusion des messages, tout en respectant les règles de neutralité et d'impartialité de l'enquêteur.
+
+\section{Conception des questionnaires}
+
+Un ensemble de questions ouvertes a été préparé, ciblant différents aspects des faits incriminés : la création du groupe, l'intention derrière les messages, la connaissance des conséquences, et la dissimulation des preuves.
+
+\subsection{Questionnaire destiné aux auteurs présumés (Étudiant 1 et Étudiant 2)}
+L'interrogatoire se concentre sur les éléments confirmés par l'expertise (messages, heures, tentatives d'effacement).
+
+\begin{enumerate}[label=\textbf{Q\arabic*.}]
+    \item Pouvez-vous confirmer avoir créé ou participé au groupe WhatsApp intitulé \textit{cours2025} le 04/12/2025 ?
+    \item Concernant le message publié à 16h21 : \textit{"il est d'abord un enseignant stupide"}, quelle était votre intention en utilisant ce qualificatif ?
+    \item Pourquoi avez-vous diffusé la rumeur de corruption concernant M. X à 16h22 ? Quelle est la source de cette information ?
+    \item Concernant la capture d'écran partagée à 16h33, pouvez-vous confirmer en être l'auteur et expliquer si ce document a été manipulé ?
+    \item Avez-vous partagé ces messages, rumeurs ou captures d'écran sur \textbf{d'autres groupes de discussion} (WhatsApp, Telegram ou autres plateformes) ? Si oui, lesquels ?
+    \item L'expertise a révélé des tentatives d'effacement de messages sur votre appareil. Pourquoi avoir cherché à supprimer ces preuves après leur envoi ?
+    \item Aviez-vous conscience des conséquences et de la portée légale des propos et accusations tenus ?
+\end{enumerate}
+
+\subsection{Questionnaire destiné aux témoins}
+Les témoins sont interrogés sur la diffusion, la création du groupe et la réaction générale des participants.
+
+\begin{enumerate}[label=\textbf{T\arabic*.}]
+    \item Quand avez-vous pris connaissance de la création du groupe \textit{cours2025} et de l'objet des discussions ?
+    \item Avez-vous été témoin de la diffusion des messages injurieux ou des captures d'écran ? Si oui, quelle a été votre réaction ?
+    \item Êtes-vous au courant d'une \textbf{rediffusion} des messages incriminés dans d'autres groupes ou sur d'autres plateformes ?
+\end{enumerate}
+
+\section{Synthèse des entretiens (Livrable)}
+
+Suite à la simulation des interrogatoires, les réponses obtenues (simulées) sont résumées et analysées pour être versées au dossier d'instruction.
+
+\subsection{Synthèse de l'audition de l'Étudiant 2 (Auteur principal)}
+\begin{itemize}
+    \item \textbf{Reconnaissance des faits :} L'Étudiant 2 a reconnu être l'auteur des messages à 16h21 et 16h22.
+    \item \textbf{Intention :} L'injure à 16h21 est justifiée par la frustration liée à la difficulté d'un TP, sans intention de nuire initialement. L'accusation de corruption (16h22) est basée sur une rumeur non vérifiée, partagée par "l'effet de groupe".
+    \item \textbf{Manipulation :} L'Étudiant 2 a admis avoir partagé le fichier image à 16h33 mais a nié être l'auteur de la manipulation, tout en reconnaissant que l'image était destinée à "susciter la réaction".
+    \item \textbf{Tentative d'effacement :} A justifié la suppression des messages par la peur des conséquences après la réaction d'autres étudiants.
+\end{itemize}
+
+\subsection{Synthèse de l'audition de l'Étudiant 1 (Validateur/Propagateur)}
+\begin{itemize}
+    \item \textbf{Reconnaissance des faits :} L'Étudiant 1 a confirmé avoir réagi aux messages de l'Étudiant 2 (16h22 et 16h34).
+    \item \textbf{Intention :} A affirmé ne pas avoir eu l'intention de diffamer, mais d'exprimer son étonnement et sa validation de la rumeur.
+    \item \textbf{Participation :} L'Étudiant 1 a confirmé avoir transféré (simulé) la discussion à un autre étudiant en dehors du groupe (chaîne de diffusion secondaire).
+\end{itemize}
+
+\section{Livrables de la Phase 5}
+
+\begin{itemize}
+    \item \textbf{Questionnaires d’interrogatoire} (voir sections 2.1 et 2.2).
+    \item \textbf{Synthèse des entretiens} (documenté ci-dessus).
+\end{itemize}
+
+% ----------------------------------------------------------
+\chapter*{Conclusion générale}
+\addcontentsline{toc}{chapter}{Conclusion générale}
+
+Le projet, couvrant la **Phase 1 (Génération des preuves)**, la **Phase 2 (Initiation de la plainte)** et la **Phase 3 (Mandat d'expertise)**, a permis d'établir un contexte complet et réaliste d'incident numérique.
+
+Les données recueillies constituent la base de travail pour l'analyse forensique. La rédaction des documents judiciaires (plainte et mandat) a atteint l'objectif pédagogique d'appréhender le processus légal suivant la survenue d'une cyberattaque ou d'un acte de cyberharcèlement.
+
+Cette étape garantit une simulation contrôlée, des preuves structurées, et un socle solide pour la poursuite de l'apprentissage dans les étapes d'analyse technique et de rédaction du rapport final.
+
+% ----------------------------------------------------------
+\appendix
+\chapter*{Annexes}
+\addcontentsline{toc}{chapter}{Annexes}
+
+\section*{Annexe A — Captures d’écran}
+\addcontentsline{toc}{section}{Annexe A — Captures d’écran}
+
+% --- Capture 1 ---
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{capture_1.png}
+    \caption{Description de la Capture 1 : groupe whatsapp 1 (Création du groupe et premiers échanges).}
+    \label{fig:capture1}
+\end{figure}
+
+% --- Capture 2 ---
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{capture_2.png}
+    \caption{Description de la Capture 2 : groupe whatsapp 2 (Insultes et diffusion de rumeurs).}
+    \label{fig:capture2}
+\end{figure}
+
+% --- Capture 3 ---
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{capture_3.png}
+    \caption{Description de la Capture 3 : groupe whatsapp 3 (Annonce du partage de capture et réaction).}
+    \label{fig:capture3}
+\end{figure}
+
+% --- Capture 4 ---
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{capture_4.jpg}
+    \caption{Description de la Capture 4 : discussion du prof (Partage effectif du fichier incriminant).}
+    \label{fig:capture4}
+\end{figure}
+
+\section*{Annexe B — Export complet de la discussion WhatsApp}
+\addcontentsline{toc}{section}{Annexe B — Export complet de la discussion WhatsApp}
+
+\begin{lstlisting}[
+    language=,
+    caption={Extrait complet de l'historique de discussion du groupe "cours2025"},
+    breaklines=true, % Force le saut de ligne si la ligne est trop longue
+    breakatwhitespace=true, % Coupe de préférence au niveau des espaces
+    columns=flexible, % Ajuste la largeur
+    basicstyle=\ttfamily\footnotesize, % Réduit la taille pour faire tenir le contenu
+    % Option pour gérer les caractères non-ASCII problématiques:
+    literate={}{ }{0} % Remplace tout caractère non reconnu par un espace (pour éviter l'erreur)
+]
+04/12/2025, 16:18 - Les messages et les appels sont chiffrés de bout en bout. Seules les personnes prenant part à cette discussion peuvent les lire, les écouter ou les partager. En savoir plus.
+04/12/2025, 16:18 - Vous avez créé ce groupe
+04/12/2025, 16:18 - ‎Etudiant 2 a été ajouté·e
+04/12/2025, 16:19 - Etudiant 2: bonjour cher camarade
+04/12/2025, 16:20 - Etudiant 1: vous allez bien ? Qui a réussi à faire le TP du prof ?
+04/12/2025, 16:20 - Etudiant 2: personne
+04/12/2025, 16:21 - Etudiant 2: il est d'abord un enseignant stupide
+04/12/2025, 16:22 - Etudiant 2: il paraît qu'il recoit souvent de l'argent de la part des étudiants pour les notes. Un aîné académique a témoigné
+04/12/2025, 16:22 - Etudiant 1: lequel comme ça [emojis/rires], donc le type ci nous noie hein
+04/12/2025, 16:23 - Etudiant 2: l'identité de la source doit être preserver please [emojis/mains jointes]
+04/12/2025, 16:23 - Etudiant 2: mais j'ai une capture d'ecran de leur echanges si vous voulez mes camarades <Ce message a été modifié>
+04/12/2025, 16:33 - Etudiant 2: ‎IMG-20251204-WA0002.jpg (fichier joint)
+04/12/2025, 16:34 - Etudiant 1: donc ce type est un corrompu hein , il fait comme un ange Gabriel [emojis/rires]
+\end{lstlisting}
+
+\end{document}
