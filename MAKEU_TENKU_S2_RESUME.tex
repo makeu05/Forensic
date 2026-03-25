@@ -1,0 +1,144 @@
+% ==============================================================================
+% Fichier     : main.tex
+% Titre       : Résumé académique -- Processus Investigatif Universel
+% Institution : Université de Yaoundé I -- ENSP
+% ==============================================================================
+
+\documentclass[12pt, a4paper]{report}
+
+\usepackage{style}
+\usepackage{multicol}
+\sloppy
+
+% ==============================================================================
+% VARIABLES
+% ==============================================================================
+\newcommand{\Universite}{Université de Yaoundé I}
+\newcommand{\Etablissement}{École Nationale Supérieure Polytechnique}
+\newcommand{\Departement}{Département de Génie Informatique}
+\newcommand{\AnneeAcademique}{2025 -- 2026}
+\newcommand{\LogoEtab}{logo_polytech.png}
+\newcommand{\CodeUE}{GES4062}
+\newcommand{\TitreRapport}{TECHNIQUES D'INVESTIGATION NUMERIQUE AVANCEE}
+\newcommand{\ThemeProjet}{\LARGE Résumé de la méthodologie du cours d'Investigation Numérique}
+\newcommand{\Etudiant}{MAKEU TENKU STELY BELVA}
+\newcommand{\Matricule}{24P826}
+\newcommand{\Filiere}{Cybersécurité et Investigation Numérique}
+\newcommand{\Niveau}{Niveau 4}
+\newcommand{\Encadreur}{Ing. THIERRY MINKA}
+\newcommand{\GradeEncadreur}{Enseignant -- ENSP}
+\newcommand{\DateSoumission}{Mars 2026}
+
+% ==============================================================================
+\begin{document}
+	
+	% PAGE DE GARDE
+	\input{PageGarde}
+	
+	% ==============================================================================
+	% PAGE 1
+	% ==============================================================================
+	\thispagestyle{plain}
+	\vspace*{0.2cm}
+	
+	% En-tête du résumé
+	
+	
+	\vspace{0.35cm}
+	
+	% ---------------------------------------------------------------
+	% INTRODUCTION
+	% ---------------------------------------------------------------
+	\noindent
+	Le \termecle{Processus Investigatif Universel} (PIU) constitue un cadre
+	méthodologique structuré, conçu pour conduire toute investigation --
+	individuelle, organisationnelle ou judiciaire -- de manière rigoureuse,
+	traçable et juridiquement défendable. Son architecture modulaire repose
+	sur \textbf{cinq phases séquentielles}, \textbf{dix-sept étapes opérationnelles}
+	et \textbf{trois points de contrôle qualité} (Quality Gates), chaque étape
+	étant déclinable selon trois niveaux de profondeur : minimal, standard
+	et avancé, calibrés en fonction de la criticité du cas.
+	
+	\vspace{0.4cm}
+	
+	% ---------------------------------------------------------------
+	% SECTION 1
+	% ---------------------------------------------------------------
+	\begin{boxobjectifs}
+		\textbf{Objectifs fondamentaux du PIU :}
+		\begin{itemize}
+			\item Établissement factuel objectif et reproductible
+			\item Préservation de l'intégrité probatoire à chaque étape
+			\item Traçabilité complète permettant l'audit indépendant
+			\item Production de conclusions résistantes à la contestation contradictoire
+		\end{itemize}
+	\end{boxobjectifs}
+	
+	\vspace{0.35cm}
+	
+	% ---------------------------------------------------------------
+	% SECTION 2 : LES 5 PHASES
+	% ---------------------------------------------------------------
+	{\color{CP}\large\sffamily\bfseries\faAngleDoubleRight\enspace
+		Architecture du Processus en Cinq Phases}
+	\vspace{0.15cm}
+	\color{CV}\rule{\linewidth}{0.8pt}
+	\color{CT}
+	
+	\vspace{0.3cm}
+	
+	\textbf{Phase 1 -- Initialisation (E1--E3).}
+	Cette phase établit la recevabilité de la demande investigative. Elle
+	comprend l'évaluation préliminaire de la demande (E1), la décision
+	formelle d'engagement matérialisée par un mandat d'investigation (E2),
+	et la planification opérationnelle (E3). Le \termecle{Quality Gate 1}
+	valide la disponibilité des ressources, la clarté du périmètre et
+	l'opérationnalité des outils avant tout démarrage effectif.
+	
+	\vspace{0.25cm}
+	
+	\textbf{Phase 2 -- Acquisition et préservation (E4--E6).}
+	Cette phase constitue la base probatoire de l'investigation. La collecte
+	systématique des éléments (E4) s'effectue selon des protocoles documentés,
+	incluant horodatage et identification de l'opérateur. La sécurisation (E5)
+	applique le principe 3-2-1 (trois copies, deux supports, une localisation
+	distincte) avec calcul d'empreintes cryptographiques (SHA-256 minimum).
+	La cartographie des parties prenantes (E6) établit la matrice
+	relationnelle complète. Le \termecle{Quality Gate 2} certifie l'intégrité
+	et la recevabilité juridique du corpus probatoire.
+	
+	\vspace{0.25cm}
+	
+	\textbf{Phase 3 -- Investigation analytique (E7--E10).}
+	Phase centrale du processus, elle mobilise la collecte testimoniale (E7),
+	la génération d'au moins cinq hypothèses distinctes (E8) -- incluant
+	obligatoirement une hypothèse nulle et des hypothèses improbables --,
+	la confrontation systématique hypothèses/preuves via une matrice de
+	compatibilité (E9), la \termecle{falsification active} inspirée du
+	principe épistémologique de Popper (E9bis), et la validation
+	multi-méthodes des conclusions (E10). Le \termecle{Quality Gate 3}
+	conditionne la progression ; les itérations de cette phase (retours
+	vers E4--E6 ou E7--E10) constituent une caractéristique normale et
+	souhaitable d'une investigation rigoureuse.
+	
+	\vspace{0.25cm}
+	
+	\textbf{Phase 4 -- Formalisation et transmission (E11--E13).}
+	Le dossier consolidé s'organise en cinq volumes (synthèse, analyses,
+	preuves, témoignages, annexes). Le rapport final adopte une structure
+	tripartite : synthèse exécutive (2--4 pages), rapport technique
+	(20--100 pages), dossier probatoire. La transmission s'effectue de
+	manière sécurisée et traçable, avec bordereau signé et accusé de
+	réception contresigné.
+	
+	\vspace{0.25cm}
+	
+	\textbf{Phase 5 -- Suivi post-transmission (E14--E17).}
+	Cette phase, essentielle en contexte contentieux, couvre la préparation
+	à la défense contradictoire, la maintenance probatoire, l'analyse des
+	contre-expertises et la clôture avec retour d'expérience (REX)
+	documentant les enseignements pour les investigations futures.
+	
+	
+	
+\end{document}
